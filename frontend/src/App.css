@@ -191,3 +191,24 @@ label {
     padding: 16px;
   }
 }
+
+.table.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table.schedule-table th,
+.table.schedule-table td {
+  border: 1px solid rgba(112, 122, 153, 0.18);
+  padding: 12px 14px;
+  text-align: left;
+}
+
+.table.schedule-table th {
+  background: rgba(43, 101, 255, 0.08);
+  color: #1c2e56;
+}
+
+.table.schedule-table tbody tr:nth-child(even) {
+  background: rgba(43, 101, 255, 0.06);
+}

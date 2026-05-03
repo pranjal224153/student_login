@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import API from "../utils/api";
 
 function Navbar({ student, onLogout }) {
+  const navigate = useNavigate();
   const [healthStatus, setHealthStatus] = useState("Checking...");
 
   useEffect(() => {
@@ -36,7 +38,11 @@ function Navbar({ student, onLogout }) {
           </div>
         </div>
 
-        <div className="d-flex align-items-center gap-2">
+        <div className="d-flex align-items-center gap-2 flex-wrap">
+          <button className="btn btn-link text-link p-0" onClick={() => navigate("/dashboard")}>Dashboard</button>
+          <button className="btn btn-link text-link p-0" onClick={() => navigate("/profile")}>Profile</button>
+          <button className="btn btn-link text-link p-0" onClick={() => navigate("/schedule")}>Schedule</button>
+          <button className="btn btn-link text-link p-0" onClick={() => navigate("/premium")}>Premium</button>
           {student.premium && <span className="nav-chip">Premium</span>}
           <button className="btn btn-outline-primary btn-sm" onClick={onLogout}>
             Logout

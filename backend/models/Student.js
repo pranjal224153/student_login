@@ -18,6 +18,18 @@ const studentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    department: {
+        type: String,
+        default: "General Studies"
+    },
+    year: {
+        type: String,
+        default: "1st Year"
+    },
+    gpa: {
+        type: Number,
+        default: 0.0
+    },
     premium: {
         type: Boolean,
         default: false

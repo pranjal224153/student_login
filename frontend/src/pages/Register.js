@@ -3,7 +3,14 @@ import API from "../utils/api";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
-  const [form, setForm] = useState({ name: "", email: "", password: "", course: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    course: "",
+    department: "",
+    year: ""
+  });
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -11,7 +18,7 @@ function Register() {
     e.preventDefault();
     setError("");
 
-    if (!form.name || !form.email || !form.password || !form.course) {
+    if (!form.name || !form.email || !form.password || !form.course || !form.department || !form.year) {
       setError("Please fill in all fields.");
       return;
     }
@@ -59,6 +66,25 @@ function Register() {
             placeholder="Course"
             onChange={(e) => setForm({ ...form, course: e.target.value })}
           />
+
+          <input
+            value={form.department}
+            className="form-control my-3"
+            placeholder="Department"
+            onChange={(e) => setForm({ ...form, department: e.target.value })}
+          />
+
+          <select
+            value={form.year}
+            className="form-select my-3"
+            onChange={(e) => setForm({ ...form, year: e.target.value })}
+          >
+            <option value="">Select Year</option>
+            <option value="1st Year">1st Year</option>
+            <option value="2nd Year">2nd Year</option>
+            <option value="3rd Year">3rd Year</option>
+            <option value="4th Year">4th Year</option>
+          </select>
 
           {error && <div className="alert alert-danger mt-2">{error}</div>}
 

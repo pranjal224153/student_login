@@ -101,6 +101,18 @@ function Dashboard() {
               >
                 {student.premium ? "View Premium Content" : "See Premium Page"}
               </button>
+              <button
+                className="btn btn-outline-secondary w-100 mt-3"
+                onClick={() => navigate("/profile")}
+              >
+                Academic Profile
+              </button>
+              <button
+                className="btn btn-outline-secondary w-100 mt-3"
+                onClick={() => navigate("/schedule")}
+              >
+                Class Schedule
+              </button>
             </div>
           </div>
 

@@ -4,6 +4,8 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Premium from "./pages/Premium";
+import Profile from "./pages/Profile";
+import Schedule from "./pages/Schedule";
 import "./App.css";
 
 const PrivateRoute = ({ children }) => {
@@ -29,6 +31,22 @@ function App() {
           element={
             <PrivateRoute>
               <Premium />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/schedule"
+          element={
+            <PrivateRoute>
+              <Schedule />
             </PrivateRoute>
           }
         />

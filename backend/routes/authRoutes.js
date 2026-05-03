@@ -5,6 +5,7 @@ const {
     login,
     updatePassword,
     updateCourse,
+    updateProfile,
     upgradePremium
 } = require("../controllers/authController");
 
@@ -17,6 +18,7 @@ router.post("/login", login);
 // Protected
 router.put("/update-password", authMiddleware, updatePassword);
 router.put("/update-course", authMiddleware, updateCourse);
+router.put("/update-profile", authMiddleware, updateProfile);
 router.put("/upgrade-premium", authMiddleware, upgradePremium);
 
 module.exports = router;

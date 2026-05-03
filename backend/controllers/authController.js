@@ -12,7 +12,7 @@ const generateToken = (id) => {
 // REGISTER
 exports.register = async (req, res) => {
     try {
-        const { name, email, password, course } = req.body;
+        const { name, email, password, course, department, year } = req.body;
 
         const existingUser = await Student.findOne({ email });
         if (existingUser) {
@@ -26,6 +26,8 @@ exports.register = async (req, res) => {
             email,
             password: hashedPassword,
             course,
+            department,
+            year,
             premium: false
         });
 
@@ -37,6 +39,9 @@ exports.register = async (req, res) => {
                 name: student.name,
                 email: student.email,
                 course: student.course,
+                department: student.department,
+                year: student.year,
+                gpa: student.gpa,
                 premium: student.premium
             }
         });
@@ -68,6 +73,9 @@ exports.login = async (req, res) => {
                 name: student.name,
                 email: student.email,
                 course: student.course,
+                department: student.department,
+                year: student.year,
+                gpa: student.gpa,
                 premium: student.premium
             }
         });
@@ -113,6 +121,37 @@ exports.updateCourse = async (req, res) => {
 
         res.json({ message: "Course updated", student });
 
+    } catch (error) {
+        res.status(500).json({ message: "Server Error" });
+    }
+};
+
+// UPDATE PROFILE
+exports.updateProfile = async (req, res) => {
+    try {
+        const { course, department, year, gpa } = req.body;
+
+        const student = await Student.findById(req.user.id);
+        if (course) student.course = course;
+        if (department) student.department = department;
+        if (year) student.year = year;
+        if (gpa !== undefined) student.gpa = gpa;
+
+        await student.save();
+
+        res.json({
+            message: "Profile updated",
+            student: {
+                _id: student._id,
+                name: student.name,
+                email: student.email,
+                course: student.course,
+                department: student.department,
+                year: student.year,
+                gpa: student.gpa,
+                premium: student.premium
+            }
+        });
     } catch (error) {
         res.status(500).json({ message: "Server Error" });
     }
