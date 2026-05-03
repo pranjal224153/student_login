@@ -11,6 +11,17 @@ function Dashboard() {
   const [course, setCourse] = useState(storedStudent.course || "");
   const [statusMessage, setStatusMessage] = useState("");
 
+  const pendingAssignments = student.assignments ? student.assignments.filter((item) => item.status === "Pending").length : 0;
+  const submittedAssignments = student.assignments ? student.assignments.filter((item) => item.submitted).length : 0;
+  const averageAttendance = student.attendanceRecords && student.attendanceRecords.length
+    ? Math.round(student.attendanceRecords.reduce((sum, record) => {
+        if (record.totalClasses > 0) {
+          return sum + (record.attended / record.totalClasses) * 100;
+        }
+        return sum;
+      }, 0) / student.attendanceRecords.length)
+    : 0;
+
   const updatePassword = async () => {
     try {
       await API.put("/update-password", passwordData);
@@ -77,6 +88,9 @@ function Dashboard() {
               <p><strong>Name:</strong> {student.name}</p>
               <p><strong>Email:</strong> {student.email}</p>
               <p><strong>Course:</strong> {student.course}</p>
+              <p><strong>Pending assignments:</strong> {pendingAssignments}</p>
+              <p><strong>Average attendance:</strong> {averageAttendance}%</p>
+              <p><strong>Submitted assignments:</strong> {submittedAssignments}</p>
             </div>
           </div>
 

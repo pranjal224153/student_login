@@ -42,6 +42,8 @@ exports.register = async (req, res) => {
                 department: student.department,
                 year: student.year,
                 gpa: student.gpa,
+                assignments: student.assignments,
+                attendanceRecords: student.attendanceRecords,
                 premium: student.premium
             }
         });
@@ -76,6 +78,8 @@ exports.login = async (req, res) => {
                 department: student.department,
                 year: student.year,
                 gpa: student.gpa,
+                assignments: student.assignments,
+                attendanceRecords: student.attendanceRecords,
                 premium: student.premium
             }
         });
@@ -149,6 +153,56 @@ exports.updateProfile = async (req, res) => {
                 department: student.department,
                 year: student.year,
                 gpa: student.gpa,
+                assignments: student.assignments,
+                attendanceRecords: student.attendanceRecords,
+                premium: student.premium
+            }
+        });
+    } catch (error) {
+        res.status(500).json({ message: "Server Error" });
+    }
+};
+
+// UPDATE ASSIGNMENTS
+exports.updateAssignments = async (req, res) => {
+    try {
+        const { assignments } = req.body;
+        const student = await Student.findById(req.user.id);
+        student.assignments = assignments || student.assignments;
+        await student.save();
+
+        res.json({
+            message: "Assignments updated",
+            student: {
+                _id: student._id,
+                name: student.name,
+                email: student.email,
+                assignments: student.assignments,
+                attendanceRecords: student.attendanceRecords,
+                premium: student.premium
+            }
+        });
+    } catch (error) {
+        res.status(500).json({ message: "Server Error" });
+    }
+};
+
+// UPDATE ATTENDANCE
+exports.updateAttendance = async (req, res) => {
+    try {
+        const { attendanceRecords } = req.body;
+        const student = await Student.findById(req.user.id);
+        student.attendanceRecords = attendanceRecords || student.attendanceRecords;
+        await student.save();
+
+        res.json({
+            message: "Attendance updated",
+            student: {
+                _id: student._id,
+                name: student.name,
+                email: student.email,
+                assignments: student.assignments,
+                attendanceRecords: student.attendanceRecords,
                 premium: student.premium
             }
         });

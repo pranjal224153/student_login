@@ -6,6 +6,8 @@ const {
     updatePassword,
     updateCourse,
     updateProfile,
+    updateAssignments,
+    updateAttendance,
     upgradePremium
 } = require("../controllers/authController");
 
@@ -19,6 +21,8 @@ router.post("/login", login);
 router.put("/update-password", authMiddleware, updatePassword);
 router.put("/update-course", authMiddleware, updateCourse);
 router.put("/update-profile", authMiddleware, updateProfile);
+router.put("/update-assignments", authMiddleware, updateAssignments);
+router.put("/update-attendance", authMiddleware, updateAttendance);
 router.put("/upgrade-premium", authMiddleware, upgradePremium);
 
 module.exports = router;

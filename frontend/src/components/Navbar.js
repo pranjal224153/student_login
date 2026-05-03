@@ -42,6 +42,8 @@ function Navbar({ student, onLogout }) {
           <button className="btn btn-link text-link p-0" onClick={() => navigate("/dashboard")}>Dashboard</button>
           <button className="btn btn-link text-link p-0" onClick={() => navigate("/profile")}>Profile</button>
           <button className="btn btn-link text-link p-0" onClick={() => navigate("/schedule")}>Schedule</button>
+          <button className="btn btn-link text-link p-0" onClick={() => navigate("/assignments")}>Assignments</button>
+          <button className="btn btn-link text-link p-0" onClick={() => navigate("/attendance")}>Attendance</button>
           <button className="btn btn-link text-link p-0" onClick={() => navigate("/premium")}>Premium</button>
           {student.premium && <span className="nav-chip">Premium</span>}
           <button className="btn btn-outline-primary btn-sm" onClick={onLogout}>
