@@ -95,6 +95,12 @@ function Dashboard() {
               >
                 {student.premium ? "Premium Active" : "Activate Premium"}
               </button>
+              <button
+                className="btn btn-outline-primary w-100 mt-3"
+                onClick={() => navigate("/premium")}
+              >
+                {student.premium ? "View Premium Content" : "See Premium Page"}
+              </button>
             </div>
           </div>
 

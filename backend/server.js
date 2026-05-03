@@ -11,6 +11,16 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// Health check
+app.get("/api/health", (req, res) => {
+  res.json({
+    status: "ok",
+    app: "student-login",
+    env: process.env.NODE_ENV || "development",
+    time: new Date().toISOString()
+  });
+});
+
 // Routes
 app.use("/api", require("./routes/authRoutes"));
 

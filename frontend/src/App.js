@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import Premium from "./pages/Premium";
 import "./App.css";
 
 const PrivateRoute = ({ children }) => {
@@ -20,6 +21,14 @@ function App() {
           element={
             <PrivateRoute>
               <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/premium"
+          element={
+            <PrivateRoute>
+              <Premium />
             </PrivateRoute>
           }
         />
