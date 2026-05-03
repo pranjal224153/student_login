@@ -1,38 +1,193 @@
-.App {
+:root {
+  color-scheme: dark;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #0a1f4d;
+  color: #112240;
+}
+
+html, body, #root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, rgba(43, 101, 255, 0.2), transparent 25%),
+    linear-gradient(180deg, #0f3c82 0%, #0b274f 100%);
+}
+
+.page-background {
+  min-height: 100vh;
+  padding: 40px 16px 60px;
+}
+
+.auth-card,
+.dashboard-card {
+  max-width: 520px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  box-shadow: 0 28px 80px rgba(6, 17, 49, 0.2);
+}
+
+.auth-card {
+  padding: 32px 28px;
+}
+
+.dashboard-card {
+  padding: 32px 28px;
+}
+
+h2 {
+  margin-bottom: 0.75rem;
+}
+
+p,
+label {
+  color: #2d3b5d;
+}
+
+.form-control {
+  border-radius: 14px;
+  padding: 14px 16px;
+  border: 1px solid rgba(112, 122, 153, 0.28);
+  background: #fbfcff;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(43, 101, 255, 0.18);
+  border-color: #2b65ff;
+}
+
+.btn-primary,
+.btn-info,
+.btn-warning,
+.btn-danger {
+  border-radius: 14px;
+  font-weight: 600;
+  min-height: 48px;
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #f6c846 0%, #f49d2b 100%);
+  color: #0f1f3a;
+  border: none;
+}
+
+.btn-gold:hover {
+  filter: brightness(1.05);
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.free-plan {
+  background: rgba(255, 220, 107, 0.2);
+  color: #7c5b00;
+}
+
+.premium-active {
+  background: rgba(84, 114, 255, 0.16);
+  color: #2230a8;
+}
+
+.card-section {
+  gap: 20px;
+}
+
+.feature-box,
+.premium-card {
+  background: #fff;
+  border: 1px solid rgba(112, 122, 153, 0.16);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.feature-box h5,
+.premium-card h5 {
+  margin-bottom: 0.75rem;
+}
+
+.feature-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.feature-list li {
+  margin-bottom: 0.8rem;
+  color: #44506c;
+}
+
+.feature-list li::before {
+  content: "✓";
+  margin-right: 0.75rem;
+  color: #2b65ff;
+}
+
+.text-link {
+  cursor: pointer;
+  color: #2b65ff;
+  text-decoration: none;
+}
+
+.text-link:hover {
+  text-decoration: underline;
+}
+
+.app-navbar {
+  max-width: 1040px;
+  margin: 0 auto 24px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  border-radius: 22px;
+  padding: 14px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.navbar-brand {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f2a6b;
+}
+
+.nav-chip {
+  background: rgba(66, 89, 255, 0.12);
+  color: #1f318b;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.auth-footer {
+  margin-top: 1.3rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.auth-footer p {
+  margin: 0;
+  color: #59708f;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.auth-footer .text-link {
+  font-weight: 700;
+}
+
+@media (max-width: 576px) {
+  .auth-card,
+  .dashboard-card {
+    padding: 24px 18px;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+  .app-navbar {
+    padding: 16px;
   }
 }

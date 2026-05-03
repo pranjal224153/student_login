@@ -25,12 +25,20 @@ exports.register = async (req, res) => {
             name,
             email,
             password: hashedPassword,
-            course
+            course,
+            premium: false
         });
 
         res.status(201).json({
             message: "User Registered",
-            token: generateToken(student._id)
+            token: generateToken(student._id),
+            student: {
+                _id: student._id,
+                name: student.name,
+                email: student.email,
+                course: student.course,
+                premium: student.premium
+            }
         });
 
     } catch (error) {
@@ -54,14 +62,15 @@ exports.login = async (req, res) => {
         }
 
         res.json({
-    token: generateToken(student._id),
-    student: {
-        _id: student._id,
-        name: student.name,
-        email: student.email,
-        course: student.course
-    }
-});
+            token: generateToken(student._id),
+            student: {
+                _id: student._id,
+                name: student.name,
+                email: student.email,
+                course: student.course,
+                premium: student.premium
+            }
+        });
 
     } catch (error) {
         res.status(500).json({ message: "Server Error" });
@@ -104,6 +113,30 @@ exports.updateCourse = async (req, res) => {
 
         res.json({ message: "Course updated", student });
 
+    } catch (error) {
+        res.status(500).json({ message: "Server Error" });
+    }
+};
+
+// UPGRADE TO PREMIUM
+exports.upgradePremium = async (req, res) => {
+    try {
+        const student = await Student.findById(req.user.id);
+        if (!student.premium) {
+            student.premium = true;
+            await student.save();
+        }
+
+        res.json({
+            message: "Premium activated",
+            student: {
+                _id: student._id,
+                name: student.name,
+                email: student.email,
+                course: student.course,
+                premium: student.premium
+            }
+        });
     } catch (error) {
         res.status(500).json({ message: "Server Error" });
     }

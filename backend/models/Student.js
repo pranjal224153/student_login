@@ -17,6 +17,10 @@ const studentSchema = new mongoose.Schema({
     course: {
         type: String,
         required: true
+    },
+    premium: {
+        type: Boolean,
+        default: false
     }
 }, { timestamps: true });
 
